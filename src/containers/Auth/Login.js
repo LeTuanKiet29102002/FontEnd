@@ -42,8 +42,7 @@ class Login extends Component {
                         <i className="fab fa-google-plus-g google"></i>
                         <i class="fab fa-facebook-f facebook"></i>
                         </div>
-                        <div>hello word</div>
-                        <div>ABC</div>
+                        <div>hell0</div>
                     </div>
                 </div>
             </div>
