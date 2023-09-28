@@ -1,8 +1,8 @@
 .login-background {
     height: 100vh;
     background: linear-gradient(135deg,
-            rgb(55, 205, 157) 0%,
-            rgb(253, 121, 45) 100%);
+            rgb(125, 55, 205) 0%,rgb(185, 205, 55) 50%,
+            rgb(45, 253, 218) 100%);
 
     .login-container {
         border: 1px solid white;
@@ -54,8 +54,8 @@
                     outline: none;
                     border: none;
                     background: linear-gradient(135deg,
-                            rgb(55, 205, 157) 0%,
-                            rgb(253, 121, 45) 100%);
+                    rgb(125, 55, 205) 0%,rgb(185, 205, 55) 50%,
+                    rgb(45, 253, 218) 100%);
                     color: white;
                     font-size: 18px;
                     font-weight: 400;
