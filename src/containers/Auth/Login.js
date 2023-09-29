@@ -6,7 +6,7 @@ import * as actions from "../../store/actions";
 
 import './Login.scss';
 import { FormattedMessage } from 'react-intl';
-import {handleLoginApi} from '../../services/userService';
+import { handleLoginApi } from '../../services/userService';
 
 
 class Login extends Component {
@@ -16,7 +16,7 @@ class Login extends Component {
             username: '',
             password: '',
             isShowPassword: false,
-            errMessage:''
+            errMessage: ''
         }
     }
 
@@ -34,37 +34,37 @@ class Login extends Component {
         // console.log(event.target.value);
     }
 
-    handleLogin = async() => {
+    handleLogin = async () => {
         this.setState({
             errMessage: ''
         })
         try {
-            
+
             let data = await handleLoginApi(this.state.username, this.state.password)
-            if(data && data.errCode!==0){
-                this.setState({errMessage: data.message});
+            if (data && data.errCode !== 0) {
+                this.setState({ errMessage: data.message });
             }
-            if(data&&data.errCode===0){
+            if (data && data.errCode === 0) {
                 this.props.userLoginSuccess(data.user);
                 console.log('Login success!');
             }
-            
+
         } catch (e) {
-            if(e.response){
-                if(e.response.data){
+            if (e.response) {
+                if (e.response.data) {
                     this.setState({
                         errMessage: e.response.data.message
                     })
                 }
             }
             console.log('hoidanit', e.response);
-            
+
         }
     }
 
-    handleShowHidePassword=()=>{
+    handleShowHidePassword = () => {
         this.setState({
-            isShowPassword : !this.state.isShowPassword
+            isShowPassword: !this.state.isShowPassword
         });
     }
 
@@ -83,21 +83,27 @@ class Login extends Component {
                         <div className='col-12 form-group login-input'>
                             <label>Password:</label>
                             <div className='custom-input-password'>
-                            <input type={this.state.isShowPassword ? 'text':'password'} className='form-control' placeholder='Enter your password' value={this.state.password}
-                                onChange={(event) => this.handleOnChangePassword(event)}
-                            />
-                            <span onClick={()=>{
-                                this.handleShowHidePassword();
-                            }}>
-                            <i className={this.state.isShowPassword?"fas fa-eye":"fas fa-eye-slash"}></i>
-                            </span>
+                                <input type={this.state.isShowPassword ? 'text' : 'password'} className='form-control' placeholder='Enter your password' value={this.state.password}
+                                    onChange={(event) => this.handleOnChangePassword(event)}
+                                />
+                                <span onClick={() => {
+                                    this.handleShowHidePassword();
+                                }}>
+                                    <i className={this.state.isShowPassword ? "fas fa-eye" : "fas fa-eye-slash"}></i>
+                                </span>
                             </div>
                         </div>
-                        <div className='col-12' style={{color:'red'}}>
+                        <div className='col-12' style={{ color: 'red' }}>
                             {this.state.errMessage}
                         </div>
                         <div className='col-12 btn-login'>
-                            <button className='btn-login-text' onClick={() => { this.handleLogin() }}>Login</button>
+                            <button className='btn-login-text' onClick={() => { this.handleLogin() }}>
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                Login
+                            </button>
                         </div>
                         <div className='col-12 '>
                             <span className='forgot-password'>Forgot your password</span>
@@ -126,7 +132,7 @@ const mapDispatchToProps = dispatch => {
     return {
         navigate: (path) => dispatch(push(path)),
         // userLoginFail: () => dispatch(actions.adminLoginFail()),
-        userLoginSuccess:(userInfor)=> dispatch(actions.userLoginSuccess(userInfor)),
+        userLoginSuccess: (userInfor) => dispatch(actions.userLoginSuccess(userInfor)),
     };
 };
 
