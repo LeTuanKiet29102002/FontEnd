@@ -16,7 +16,10 @@ class Login extends Component {
             username: '',
             password: '',
             isShowPassword: false,
-            errMessage: ''
+            errMessage: '',
+            isUsernameFocused: false,
+            isPasswordFocused: false,
+            changeBackground: false,
         }
     }
 
@@ -64,56 +67,81 @@ class Login extends Component {
 
     handleShowHidePassword = () => {
         this.setState({
-            isShowPassword: !this.state.isShowPassword
+            isShowPassword: !this.state.isShowPassword,
+            changeBackground:!this.state.changeBackground
         });
+    }
+
+    handleFocus = (inputName) => {
+        if (inputName === 'username') {
+            this.setState({ isUsernameFocused: true })
+        }
+        else if (inputName === 'password') {
+            this.setState({ isPasswordFocused: true })
+        }
+    }
+
+    handleBlur = (inputName) => {
+        if (inputName === 'username') {
+            this.setState({ isUsernameFocused: false });
+        }
+        else if (inputName === 'password') {
+            this.setState({ isPasswordFocused: false });
+        }
     }
 
     render() {
         return (
-            <div className='login-background'>
-                <div className='login-container'>
-                    <div className='login-content row'>
-                        <div className='col-12 login-text'>Login</div>
-                        <div className='col-12 form-group login-input'>
-                            <label>Username:</label>
-                            <input type='text' className='form-control' placeholder='Enter your username' value={this.state.username}
-                                onChange={(event) => this.handleOnChangeUsername(event)}
-                            />
-                        </div>
-                        <div className='col-12 form-group login-input'>
-                            <label>Password:</label>
-                            <div className='custom-input-password'>
-                                <input type={this.state.isShowPassword ? 'text' : 'password'} className='form-control' placeholder='Enter your password' value={this.state.password}
-                                    onChange={(event) => this.handleOnChangePassword(event)}
+            <div className='main'>
+                <div className={this.state.changeBackground ? "login-background-active" : "login-background"}>
+                    <div className='login-container'>
+                        <div className='login-content row'>
+                            <div className='col-12 login-text'>Login</div>
+                            <div className='col-12 form-group login-input'>
+                                <label className={this.state.isUsernameFocused ? "label-text-active" : "label-text"}>Username:</label>
+                                <input type='text' className='form-control' placeholder='Enter your username' value={this.state.username}
+                                    onChange={(event) => this.handleOnChangeUsername(event)}
+                                    onFocus={() => this.handleFocus('username')}
+                                    onBlur={() => this.handleBlur('username')}
                                 />
-                                <span onClick={() => {
-                                    this.handleShowHidePassword();
-                                }}>
-                                    <i className={this.state.isShowPassword ? "fas fa-eye" : "fas fa-eye-slash"}></i>
-                                </span>
                             </div>
-                        </div>
-                        <div className='col-12' style={{ color: 'red' }}>
-                            {this.state.errMessage}
-                        </div>
-                        <div className='col-12 btn-login'>
-                            <button className='btn-login-text' onClick={() => { this.handleLogin() }}>
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                                Login
-                            </button>
-                        </div>
-                        <div className='col-12 '>
-                            <span className='forgot-password'>Forgot your password</span>
-                        </div>
-                        <div className='col-12 text-center mt-3' >
-                            <span className='login-browser '>Or login with: </span>
-                        </div>
-                        <div className='col-12 login-social'>
-                            <i className="fab fa-google-plus-g google"></i>
-                            <i class="fab fa-facebook-f facebook"></i>
+                            <div className='col-12 form-group login-input'>
+                                <label className={this.state.isPasswordFocused ? "label-text-active" : "label-text"}>Password:</label>
+                                <div className='custom-input-password'>
+                                    <input type={this.state.isShowPassword ? 'text' : 'password'} className='form-control' placeholder='Enter your password' value={this.state.password}
+                                        onChange={(event) => this.handleOnChangePassword(event)}
+                                        onFocus={() => this.handleFocus('password')}
+                                        onBlur={() => this.handleBlur('password')}
+                                    />
+                                    <span onClick={() => {
+                                        this.handleShowHidePassword();
+                                    }}>
+                                        <i className={this.state.isShowPassword ? "fas fa-eye" : "fas fa-eye-slash"}></i>
+                                    </span>
+                                </div>
+                            </div>
+                            <div className='col-12' style={{ color: 'red' }}>
+                                {this.state.errMessage}
+                            </div>
+                            <div className='col-12 btn-login'>
+                                <button className='btn-login-text' onClick={() => { this.handleLogin() }}>
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                    Login
+                                </button>
+                            </div>
+                            <div className='col-12 '>
+                                <span className='forgot-password'>Forgot your password</span>
+                            </div>
+                            <div className='col-12 text-center mt-3' >
+                                <span className='login-browser '>Or login with: </span>
+                            </div>
+                            <div className='col-12 login-social'>
+                                <i className="fab fa-google-plus-g google"></i>
+                                <i className="fab fa-facebook-f facebook"></i>
+                            </div>
                         </div>
                     </div>
                 </div>

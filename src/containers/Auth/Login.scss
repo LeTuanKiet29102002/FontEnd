@@ -1,221 +1,508 @@
-.login-background {
-    height: 100vh;
-    background: linear-gradient(135deg,
-            rgb(125, 55, 205) 0%, rgb(185, 205, 55) 50%,
-            rgb(45, 253, 218) 100%);
+$bgWidth: 10000px;
+.main{
+    .login-background {
+        height: 100vh;
+        // background: linear-gradient(135deg,
+        //         rgb(125, 55, 205) 0%, rgb(185, 205, 55) 50%,
+        //         rgb(45, 253, 218) 100%);
+        background: linear-gradient(to right, #1e5799 0%, #2ce0bf 19%, #76dd2c 40%, #dba62b 60%, #e02cbf 83%, #1e5799 100%);
+        animation: bg 15s linear infinite;
+        background-size: $bgWidth 100%;
 
-    .login-container {
-        border: 1px solid white;
-        width: 400px;
-        height: 450px;
-        position: fixed;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        border-radius: 10px;
-        background-color: white;
-
-        .login-content {
-            padding: 10px;
-
-            .login-text {
-                text-align: center;
-                font-weight: 600;
-                font-size: 24px;
-                padding-top: 10px;
+        @keyframes bg {
+            0% {
+                background-position-x: 0;
             }
 
-            .login-input {
-                margin: 8px 0;
+            100% {
+                background-position-x: $bgWidth;
+            }
+        }
 
-                .custom-input-password {
-                    position: relative;
 
-                    i {
-                        position: absolute;
-                        top: 50%;
-                        transform: translateY(-50%);
-                        right: 8px;
-                        cursor: pointer;
+        .login-container {
+            border: 1px solid white;
+            width: 400px;
+            height: 450px;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border-radius: 10px;
+            background-color: white ;
+            box-shadow: .5rem 1rem 1rem rgba(0,0,0,0.6);
 
+            .login-content {
+                padding: 10px;
+
+                .login-text {
+                    text-align: center;
+                    font-weight: 600;
+                    font-size: 24px;
+                    padding-top: 10px;
+                }
+
+                .login-input {
+                    margin: 8px 0;
+                    input {
+                        border: none;
+                        border-bottom: 1px solid #ccc; /* Add a custom border-bottom style */
+                    }
+                    .label-text{
+                        color: black;
+                    }
+                    .label-text-active{
+                        color: #03e9f4;
+                        
+                    }
+                    .custom-input-password {
+                        position: relative;
+                        
+
+                        i {
+                            position: absolute;
+                            top: 50%;
+                            transform: translateY(-50%);
+                            right: 8px;
+                            cursor: pointer;
+                            color: #03e9f4;
+
+                        }
+
+                        
                     }
                 }
-            }
 
-            .btn-login {
-                display: flex;
-                justify-content: center;
-
-
-                .btn-login-text {
-                //     width: 50%;
-                //     margin: 10px 0;
-                //     height: 42px;
-                //     border-radius: 15px;
-                //     outline: none;
-                //     border: none;
-                //     background: linear-gradient(135deg,
-                //             rgb(125, 55, 205) 0%, rgb(185, 205, 55) 50%,
-                //             rgb(45, 253, 218) 100%);
-                //     color: white;
-                //     font-size: 18px;
-                //     font-weight: 400;
-                
-
-                    position: relative;
-                    display: inline-block;
-                    padding: 10px 20px;
-                    color: #03e9f4;
-                    font-size: 16px;
-                    text-decoration: none;
-                    text-transform: uppercase;
-                    overflow: hidden;
-                    transition: .5s;
-                    margin-top: 40px;
-                    letter-spacing: 4px;
-                    background-color: transparent;
-                    border: transparent solid;
+                .btn-login {
+                    display: flex;
+                    justify-content: center;
 
 
-                    span {
-                        position: absolute;
-                        display: block;
-                    }
+                    .btn-login-text {
+                        //     width: 50%;
+                        //     margin: 10px 0;
+                        //     height: 42px;
+                        //     border-radius: 15px;
+                        //     outline: none;
+                        //     border: none;
+                        //     background: linear-gradient(135deg,
+                        //             rgb(125, 55, 205) 0%, rgb(185, 205, 55) 50%,
+                        //             rgb(45, 253, 218) 100%);
+                        //     color: white;
+                        //     font-size: 18px;
+                        //     font-weight: 400;
 
-                    span:nth-child(1) {
-                        top: 0;
-                        left: -100%;
-                        width: 100%;
-                        height: 2px;
-                        background: linear-gradient(90deg, transparent, #03e9f4);
-                        animation: btn-anim1 1s linear infinite;
-                    }
 
-                    @keyframes btn-anim1 {
-                        0% {
+                        position: relative;
+                        display: inline-block;
+                        padding: 10px 20px;
+                        color: #03e9f4;
+                        font-size: 16px;
+                        text-decoration: none;
+                        text-transform: uppercase;
+                        overflow: hidden;
+                        transition: .5s;
+                        margin-top: 40px;
+                        letter-spacing: 4px;
+                        background-color: transparent;
+                        border: transparent solid;
+
+
+                        span {
+                            position: absolute;
+                            display: block;
+                        }
+
+                        span:nth-child(1) {
+                            top: 0;
                             left: -100%;
+                            width: 100%;
+                            height: 2px;
+                            background: linear-gradient(90deg, transparent, #03e9f4);
+                            animation: btn-anim1 1s linear infinite;
                         }
 
-                        50%,
-                        100% {
-                            left: 100%;
+                        @keyframes btn-anim1 {
+                            0% {
+                                left: -100%;
+                            }
+
+                            50%,
+                            100% {
+                                left: 100%;
+                            }
                         }
-                    }
 
-                    span:nth-child(2) {
-                        top: -100%;
-                        right: 0;
-                        width: 2px;
-                        height: 100%;
-                        background: linear-gradient(180deg, transparent, #03e9f4);
-                        animation: btn-anim2 1s linear infinite;
-                        animation-delay: .25s
-                    }
-
-                    @keyframes btn-anim2 {
-                        0% {
+                        span:nth-child(2) {
                             top: -100%;
+                            right: 0;
+                            width: 2px;
+                            height: 100%;
+                            background: linear-gradient(180deg, transparent, #03e9f4);
+                            animation: btn-anim2 1s linear infinite;
+                            animation-delay: .25s
                         }
 
-                        50%,
-                        100% {
-                            top: 100%;
+                        @keyframes btn-anim2 {
+                            0% {
+                                top: -100%;
+                            }
+
+                            50%,
+                            100% {
+                                top: 100%;
+                            }
                         }
-                    }
 
-                    span:nth-child(3) {
-                        bottom: 0;
-                        right: -100%;
-                        width: 100%;
-                        height: 2px;
-                        background: linear-gradient(270deg, transparent, #03e9f4);
-                        animation: btn-anim3 1s linear infinite;
-                        animation-delay: .5s
-                    }
-
-                    @keyframes btn-anim3 {
-                        0% {
+                        span:nth-child(3) {
+                            bottom: 0;
                             right: -100%;
+                            width: 100%;
+                            height: 2px;
+                            background: linear-gradient(270deg, transparent, #03e9f4);
+                            animation: btn-anim3 1s linear infinite;
+                            animation-delay: .5s
                         }
 
-                        50%,
-                        100% {
-                            right: 100%;
+                        @keyframes btn-anim3 {
+                            0% {
+                                right: -100%;
+                            }
+
+                            50%,
+                            100% {
+                                right: 100%;
+                            }
                         }
-                    }
 
-                    span:nth-child(4) {
-                        bottom: -100%;
-                        left: 0;
-                        width: 2px;
-                        height: 100%;
-                        background: linear-gradient(360deg, transparent, #03e9f4);
-                        animation: btn-anim4 1s linear infinite;
-                        animation-delay: .75s
-                    }
-
-                    @keyframes btn-anim4 {
-                        0% {
+                        span:nth-child(4) {
                             bottom: -100%;
+                            left: 0;
+                            width: 2px;
+                            height: 100%;
+                            background: linear-gradient(360deg, transparent, #03e9f4);
+                            animation: btn-anim4 1s linear infinite;
+                            animation-delay: .75s
                         }
 
-                        50%,
-                        100% {
-                            bottom: 100%;
+                        @keyframes btn-anim4 {
+                            0% {
+                                bottom: -100%;
+                            }
+
+                            50%,
+                            100% {
+                                bottom: 100%;
+                            }
                         }
+
+
+                    }
+
+                    & button:hover {
+                        background: #03e9f4;
+                        color: #fff;
+                        border-radius: 5px;
+                        box-shadow: 0 0 3px #03e9f4,
+                            0 0 6px #03e9f4,
+                            0 0 12px #03e9f4,
+                            0 0 24px #03e9f4;
                     }
 
 
+
                 }
 
-                & button:hover {
-                    background: #03e9f4;
-                    color: #fff;
-                    border-radius: 5px;
-                    box-shadow: 0 0 3px #03e9f4,
-                                0 0 6px #03e9f4,
-                                0 0 12px #03e9f4,
-                                0 0 24px #03e9f4;
+                .forgot-password {
+                    font-size: 12px;
                 }
 
-
-
-            }
-
-            .forgot-password {
-                font-size: 12px;
-            }
-
-            .login-social {
-                display: flex;
-                justify-content: center;
-                margin-top: 10px;
-
-
-                .google {
-                    background-color: red;
-                    color: white;
-                    border-radius: 50%;
-                    font-size: 35px;
-                    height: 50px;
-                    width: 50px;
+                .login-social {
                     display: flex;
                     justify-content: center;
-                    align-items: center;
-                    margin-right: 10px;
+                    margin-top: 10px;
+
+
+                    .google {
+                        background-color: red;
+                        color: white;
+                        border-radius: 50%;
+                        font-size: 35px;
+                        height: 50px;
+                        width: 50px;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        margin-right: 10px;
+                    }
+
+                    .facebook {
+                        background-color: rgb(29, 163, 225);
+                        color: white;
+                        border-radius: 50%;
+                        font-size: 35px;
+                        height: 50px;
+                        width: 50px;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+
+                    }
+                }
+            }
+        }
+    }
+    .login-background-active {
+        height: 100vh;
+        // background: linear-gradient(135deg,
+        //         rgb(125, 55, 205) 0%, rgb(185, 205, 55) 50%,
+        //         rgb(45, 253, 218) 100%);
+        // background: linear-gradient(to right, #1e5799 0%, #2ce0bf 19%, #76dd2c 40%, #dba62b 60%, #e02cbf 83%, #1e5799 100%);
+        // animation: bg 15s linear infinite;
+        background-size: $bgWidth 100%;
+
+        @keyframes bg {
+            0% {
+                background-position-x: 0;
+            }
+
+            100% {
+                background-position-x: $bgWidth;
+            }
+        }
+
+        background: url('https://images.unsplash.com/photo-1517315003714-a071486bd9ea?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=751&q=80');
+	    background-size: cover;
+
+
+        .login-container {
+            border: 1px solid white;
+            width: 400px;
+            height: 450px;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border-radius: 10px;
+            background-color: white ;
+            box-shadow: .5rem 1rem 1rem rgba(0,0,0,0.6);
+
+            .login-content {
+                padding: 10px;
+
+                .login-text {
+                    text-align: center;
+                    font-weight: 600;
+                    font-size: 24px;
+                    padding-top: 10px;
                 }
 
-                .facebook {
-                    background-color: rgb(29, 163, 225);
-                    color: white;
-                    border-radius: 50%;
-                    font-size: 35px;
-                    height: 50px;
-                    width: 50px;
+                .login-input {
+                    margin: 8px 0;
+                    input {
+                        border: none;
+                        border-bottom: 1px solid #ccc; /* Add a custom border-bottom style */
+                    }
+                    .label-text{
+                        color: black;
+                    }
+                    .label-text-active{
+                        color: rgb(100, 58, 122);
+                        
+                    }
+                    .custom-input-password {
+                        position: relative;
+                        
+
+                        i {
+                            position: absolute;
+                            top: 50%;
+                            transform: translateY(-50%);
+                            right: 8px;
+                            cursor: pointer;
+                            color: rgb(100, 58, 122);
+
+                        }
+
+                        
+                    }
+                }
+
+                .btn-login {
                     display: flex;
                     justify-content: center;
-                    align-items: center;
 
+
+                    .btn-login-text {
+                        //     width: 50%;
+                        //     margin: 10px 0;
+                        //     height: 42px;
+                        //     border-radius: 15px;
+                        //     outline: none;
+                        //     border: none;
+                        //     background: linear-gradient(135deg,
+                        //             rgb(125, 55, 205) 0%, rgb(185, 205, 55) 50%,
+                        //             rgb(45, 253, 218) 100%);
+                        //     color: white;
+                        //     font-size: 18px;
+                        //     font-weight: 400;
+
+
+                        position: relative;
+                        display: inline-block;
+                        padding: 10px 20px;
+                        color: rgb(100, 58, 122);
+                        font-size: 16px;
+                        text-decoration: none;
+                        text-transform: uppercase;
+                        overflow: hidden;
+                        transition: .5s;
+                        margin-top: 40px;
+                        letter-spacing: 4px;
+                        background-color: transparent;
+                        border: transparent solid;
+
+
+                        span {
+                            position: absolute;
+                            display: block;
+                        }
+
+                        span:nth-child(1) {
+                            top: 0;
+                            left: -100%;
+                            width: 100%;
+                            height: 2px;
+                            background: linear-gradient(90deg, transparent, rgb(100, 58, 122));
+                            animation: btn-anim1 1s linear infinite;
+                        }
+
+                        @keyframes btn-anim1 {
+                            0% {
+                                left: -100%;
+                            }
+
+                            50%,
+                            100% {
+                                left: 100%;
+                            }
+                        }
+
+                        span:nth-child(2) {
+                            top: -100%;
+                            right: 0;
+                            width: 2px;
+                            height: 100%;
+                            background: linear-gradient(180deg, transparent, rgb(100, 58, 122));
+                            animation: btn-anim2 1s linear infinite;
+                            animation-delay: .25s
+                        }
+
+                        @keyframes btn-anim2 {
+                            0% {
+                                top: -100%;
+                            }
+
+                            50%,
+                            100% {
+                                top: 100%;
+                            }
+                        }
+
+                        span:nth-child(3) {
+                            bottom: 0;
+                            right: -100%;
+                            width: 100%;
+                            height: 2px;
+                            background: linear-gradient(270deg, transparent, rgb(100, 58, 122));
+                            animation: btn-anim3 1s linear infinite;
+                            animation-delay: .5s
+                        }
+
+                        @keyframes btn-anim3 {
+                            0% {
+                                right: -100%;
+                            }
+
+                            50%,
+                            100% {
+                                right: 100%;
+                            }
+                        }
+
+                        span:nth-child(4) {
+                            bottom: -100%;
+                            left: 0;
+                            width: 2px;
+                            height: 100%;
+                            background: linear-gradient(360deg, transparent, rgb(100, 58, 122));
+                            animation: btn-anim4 1s linear infinite;
+                            animation-delay: .75s
+                        }
+
+                        @keyframes btn-anim4 {
+                            0% {
+                                bottom: -100%;
+                            }
+
+                            50%,
+                            100% {
+                                bottom: 100%;
+                            }
+                        }
+
+
+                    }
+
+                    & button:hover {
+                        background: rgb(100, 58, 122);
+                        color: #fff;
+                        border-radius: 5px;
+                        box-shadow: 0 0 3px rgb(100, 58, 122),
+                            0 0 6px rgb(100, 58, 122),
+                            0 0 12px rgb(100, 58, 122),
+                            0 0 24px rgb(100, 58, 122);
+                    }
+
+
+
+                }
+
+                .forgot-password {
+                    font-size: 12px;
+                }
+
+                .login-social {
+                    display: flex;
+                    justify-content: center;
+                    margin-top: 10px;
+
+
+                    .google {
+                        background-color: red;
+                        color: white;
+                        border-radius: 50%;
+                        font-size: 35px;
+                        height: 50px;
+                        width: 50px;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        margin-right: 10px;
+                    }
+
+                    .facebook {
+                        background-color: rgb(29, 163, 225);
+                        color: white;
+                        border-radius: 50%;
+                        font-size: 35px;
+                        height: 50px;
+                        width: 50px;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+
+                    }
                 }
             }
         }
