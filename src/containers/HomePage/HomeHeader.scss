@@ -57,28 +57,55 @@
             justify-content: flex-end;
             align-items: center;
 
-            .support{
-                padding-right:48px;
+            .support {
+                padding-right: 48px;
                 display: flex;
                 align-items: center;
                 cursor: pointer;
 
-                i{
+                i {
                     font-size: 16px;
                     margin-right: 6px;
                 }
             }
-            .language-vi{
-                margin: 0 10px;
+
+            .language-vi {
+                margin: 0 20px;
                 cursor: pointer;
-                &.active{
-                    color: orange;
+                opacity: 0.5;
+
+                &.active {
+                    opacity: 1;
+
+                    span {
+                        color: #03e9f4;
+                        text-shadow: 1px 1px 1px #333;
+
+                    }
+                }
+                &:hover{
+                    opacity: 1;
+
                 }
             }
-            .language-en{
+
+            .language-en {
                 cursor: pointer;
-                &.active{
-                    color: blue;
+                opacity: 0.5;
+
+                &.active {
+                    opacity: 1;
+
+                    span {
+                        color: rgb(197, 105, 247);
+                        text-shadow: 1px 1px 1px #333;
+
+
+                    }
+                }
+                &:hover{
+                    opacity: 1;
+
                 }
             }
 
@@ -173,6 +200,7 @@
                 .text-child {
                     font-size: 17px;
                     font-weight: 500;
+
                     &:hover {
                         color: rgb(0, 170, 255);
                         cursor: pointer;
