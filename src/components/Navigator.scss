@@ -9,6 +9,7 @@
         list-style-type: none;
     }
     .menu-group {
+        min-width: 120px;
         &:hover {
             cursor: pointer;
             // background-color: darken($colormain, 5);
