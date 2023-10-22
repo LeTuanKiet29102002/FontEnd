@@ -11,7 +11,9 @@
     .menu-group {
         &:hover {
             cursor: pointer;
-            background-color: darken($colormain, 5);
+            // background-color: darken($colormain, 5);
+            background-color: darken(#ef546e, 5);
+
         }
         .menu-group-name {
             line-height: 40px;
@@ -35,10 +37,22 @@
                 height: 35px;
                 line-height: 35px;
                 text-transform: none;
+                &.active {
+                    background-color: darken($bg-menu-color, 5);
+
+
+                    a{
+                    color: rgb(0, 170, 255) !important;
+
+                    }
+
+                }
                 .menu-link {
                     text-decoration: none;
                     color: $text-in-light;
+                    
                 }
+                
                 .sub-menu-list {
                     display: none;
                     background-color: $bg-menu-color;
@@ -69,7 +83,7 @@
                         }
                     }
                 }
-                &.active span {
+                &.active {
                     font-weight: 500;
                     color: $colormain;
                 }
