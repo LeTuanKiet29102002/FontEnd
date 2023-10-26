@@ -51,6 +51,7 @@
         "position":"Chức danh",
         "roleid":"Vai trò",
         "image":"Ảnh đại diện",
+        "upload":"Tải ảnh lên",
         "save":"Lưu"
     }
 }

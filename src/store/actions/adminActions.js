@@ -1,5 +1,5 @@
 import actionTypes from './actionTypes';
-import { getAllCodeService } from '../../services/userService'; 
+import { getAllCodeService ,createNewUserService} from '../../services/userService'; 
 
 
 // export const fetchGenderStart = () => ({
@@ -108,3 +108,31 @@ export const fetchRoleFailed = () => ({
 
 
 
+export const createNewUser = (data) => {
+    return async(dispatch,getState)=>{
+        try {
+            let res = await createNewUserService(data) ;
+            console.log('kiet check create user redux: ',res);
+            if(res && res.errCode===0){
+                // console.log('le tuan kiet check get state', getState);
+                dispatch(saveUserSuccess());
+            }else{
+                dispatch(saveUserFailed());
+
+            }
+        } catch (e) {
+            dispatch(fetchRoleFailed());
+            console.log('fetchRoleStart error',e);
+        }
+
+    }
+}
+
+
+export const saveUserSuccess = () => ({
+    type: 'CREATE_USER_SUCCESS',
+})
+
+export const saveUserFailed = () => ({
+    type: 'CREATE_USER_FAILED',
+})

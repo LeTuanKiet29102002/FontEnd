@@ -4,6 +4,10 @@
         border-radius: 3px;
         background: #ddd;
         cursor: pointer;
+        min-width: 120px;
+        i{
+            margin-left: 8px;
+        }
 
         &:hover{
             opacity: 0.8;
